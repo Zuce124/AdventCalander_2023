@@ -19,31 +19,36 @@ game_c = 0
 curr = 0
 
 for i in range(len(lines)):
+    checker_returns = []
     checker = True
 
     trash, need = lines[i].split('Game')
     curr, games = need.split(":")
     curr = curr.replace(" ", "")
 
-    if checker == True:
-        for game in games.split(";"):
-            for cubes in game.split(","):
-                cubes = cubes.replace(" ", "")
-                if "red" in cubes:
-                    cubes, trash = cubes.split("red")
-                    if int(cubes) > red_m:
-                        checker = False
 
-                if "blue" in cubes:
-                    cubes, trash = cubes.split("blue")
-                    if int(cubes) > blue_m:
-                        checker = False
+    for game in games.split(";"):
+        for cubes in game.split(","):
+            cubes = cubes.replace(" ", "")
+            if "red" in cubes:
+                cubes, trash = cubes.split("red")
+                if int(cubes) > red_m:
+                    checker = False
+                    checker_returns.append(checker)
 
-                if "green" in cubes:
-                    cubes, trash = cubes.split("green")
-                    if int(cubes) > green_m:
-                        checker = False
+            if "blue" in cubes:
+                cubes, trash = cubes.split("blue")
+                if int(cubes) > blue_m:
+                    checker = False
+                    checker_returns.append(checker)
 
+            if "green" in cubes:
+                cubes, trash = cubes.split("green")
+                if int(cubes) > green_m:
+                    checker = False
+                    checker_returns.append(checker)
+
+    if False not in checker_returns:
         game_c += int(curr)
 
 print(game_c)
