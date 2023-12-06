@@ -2,7 +2,7 @@ import os
 
 #Input path
 dir_path = os.path.dirname(os.path.realpath(__file__))
-input_path = dir_path + "\Inputs\Day1"
+input_path = dir_path + "\Day1"
 
 #Reading input
 data = open(input_path,'r')
